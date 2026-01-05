@@ -15,12 +15,6 @@ app.use(process.env.BASE_ROUTE, _);
 
 
 
-
-
-
-
-
-
 app.listen(port, () => {
   console.log(`Server is running`);
 });
