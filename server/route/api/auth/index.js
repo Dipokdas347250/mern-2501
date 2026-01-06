@@ -5,9 +5,9 @@ const router = express.Router();
 
 router.post("/signup", signupController);
 
-router.post("/login" , (req, res) => {
-    res.send("User Login Route");
-});
+// router.post("/login" , (req, res) => {
+//     res.send("User Login Route");
+// });
 
 
 module.exports = router;
