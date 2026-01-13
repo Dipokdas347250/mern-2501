@@ -28,6 +28,10 @@ const userSchema = new mongoose.Schema({
     },
     photo:{
         type: String,
+    },
+    otp:{
+        type:String,
+        
     }
 }, 
 {
