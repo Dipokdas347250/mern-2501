@@ -5,7 +5,7 @@ const asyncHandler = require("../utils/asyncHandler");
 const sendEmail = require("../helpers/sendEmail");
 const otpNumber = require("../helpers/otp");
 const { vaildEmail } = require("../helpers/vaildEmail");
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 
 
 exports.signupController = asyncHandler(
@@ -61,8 +61,9 @@ exports.loginController = asyncHandler(async(req,res)=>{
                 role:loginUser.role
               }
 
-              let token = jwt.sign({ user}, process.env.JWT_SECRET,{ expiresIn: "2m"});
-              apiResponse(res,200,"user login success",{...user, token})
+              // let token = jwt.sign({ user}, process.env.JWT_SECRET,{ expiresIn: "2m"});
+              // apiResponse(res,200,"user login success",{...user, token})
+              apiResponse(res,200,"user login success", user)
             }
             
         }
