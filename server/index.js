@@ -4,18 +4,40 @@ const { dbconfig } = require('./config/db.config');
 const _ = require('./route');
 const { globalerrorhandler } = require('./utils/globalerror');
 dbconfig()
+const session = require('express-session')
+const {MongoStore} = require('connect-mongo');
+
 const app = express();
 const port = process.env.PORT ;
 
 app.use(express.json())
+app.use(session({
+    name: 'ecommerce-session',
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false},
+    store: MongoStore.create({
+        mongoUrl: process.env.DB_DATA_URL,
+        collectionName: 'sessions'
+    })
+}));
 // localhost:8080/api/v1
+
+
+app.get('/session', (req, res) => {
+  console.log(req.session.user);
+  
+  return res.send('API is running....');
+});
 
 
 
 app.use(process.env.BASE_ROUTE, _); 
 
-
 app.use(globalerrorhandler)
+
+
 
 app.listen(port, () => {
   console.log(`Server is running`);

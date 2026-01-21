@@ -58,8 +58,19 @@ exports.loginController = asyncHandler(async(req,res)=>{
                 _id: loginUser._id,
                 fullname:loginUser.fullname,
                 email:loginUser.email,
-                role:loginUser.role
+                role:loginUser.role,
+                login: true
+              };
+
+              if(loginUser.role == "admin" || loginUser.role == "subadmin"){
+                req.session.cookie.maxAge = 24 * 60 * 60 * 1000; // 1 day
+                 req.session.user = user;
+              }else{
+                req.session.cookie.maxAge = 24 * 7 * 60 * 60 * 1000; // 7 days
+                 req.session.user = user;
               }
+
+
 
               // let token = jwt.sign({ user}, process.env.JWT_SECRET,{ expiresIn: "2m"});
               // apiResponse(res,200,"user login success",{...user, token})
