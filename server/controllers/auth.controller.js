@@ -12,6 +12,10 @@ exports.signupController = asyncHandler(
     async (req, res) => {
     let { fullname, email, password, phone, address, photo,otp } = req.body;
    let emailCheker = vaildEmail(email);
+   let checkUser = await userModel.findOne({email})
+   if(checkUser){
+    return apiResponse(res,400,"email already in use")
+   }
 
    if(!emailCheker){
      apiResponse(res,400,"invaild Email")
@@ -22,7 +26,7 @@ exports.signupController = asyncHandler(
        }
        let otp = otpNumber()
         let user = new userModel({
-        fullname, email, password:hash, phone, address, photo,otp
+        fullname, email, password:hash, phone, address, photo,otp, otpExpire: Date.now() + 5 * 60 * 1000
     })
     await user.save()
     sendEmail(email,fullname,otp)
@@ -83,6 +87,46 @@ exports.loginController = asyncHandler(async(req,res)=>{
 
    }
   
+})
+
+
+exports.verifyOtpController = asyncHandler(async(req,res)=>{
+  let {email, otp} = req.body;
+  let user = await userModel.findOne({email});
+  if(!user){
+     apiResponse(res,404,"email not found")
+  }
+  if(user.otp != otp){
+    apiResponse(res,401,"invalid otp")
+  }
+  if(user.otpExpire < new Date()){
+    user.otp = null;
+    user.otpExpire = null;
+   await user.save();
+    apiResponse(res,401,"otp expired")
+  }else{
+   user.verified = true;
+   user.otp = null;
+    user.otpExpire = null;
+   await user.save();
+    apiResponse(res,200,"otp verified successfully")
+  }
+ 
+})
+
+
+exports.resendOtpController = asyncHandler(async(req,res)=>{
+  let {email} = req.body;
+  let user = await userModel.findOne({email});
+  if(!user){
+     apiResponse(res,404,"email not found")
+  }
+  let otp = otpNumber();
+  user.otp = otp;
+  user.otpExpire = Date.now() + 5 * 60 * 1000;
+ await user.save();
+ sendEmail(email,user.fullname,otp)
+ apiResponse(res,200,"otp resend successfully")
 })
 
 exports.alluserController = asyncHandler(async(req,res)=>{

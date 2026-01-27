@@ -7,7 +7,7 @@ exports.validAuthorize = (req, res, next) => {
     // } else {
     //     return res.status(403).json({ message: "Access denied. Admin or Subadmin required." });
     // }
-    if(req.session.user.login){
+    if(req.session.user?.login){
       next()
     }else{
     apiResponse(res, 401, "Access denied. Please login first.")
