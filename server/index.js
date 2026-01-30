@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express');
+const app = express();
 const { dbconfig } = require('./config/db.config');
 const _ = require('./route');
 const { globalerrorhandler } = require('./utils/globalerror');
@@ -7,7 +8,7 @@ dbconfig()
 const session = require('express-session')
 const {MongoStore} = require('connect-mongo');
 
-const app = express();
+app.use(express.static('uploads'));
 const port = process.env.PORT ;
 
 app.use(express.json())

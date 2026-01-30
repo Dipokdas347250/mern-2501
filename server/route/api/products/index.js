@@ -1,13 +1,12 @@
 const express = require('express');
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const upload = require('../../../utils/upload');
 
 const { productsController } = require('../../../controllers/product.controller');
 
 const router = express.Router();
 
 
-router.get("/allproducts" ,upload.single('video'),productsController);
+router.get("/allproducts" ,upload.single('image'),productsController);
 
 
 module.exports = router;    
