@@ -2,10 +2,6 @@ const { apiResponse } = require("../utils/apiResponse");
 const asyncHandler = require("../utils/asyncHandler");
 const categoryModle = require("../models/categore.model");
 
-
-
-
-
 exports.productsController = asyncHandler(async(req, res, next) => {
    let {name, discount, subcategory} = req.body;
    let {filename} = req.file;
