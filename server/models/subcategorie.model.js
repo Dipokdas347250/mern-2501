@@ -6,6 +6,11 @@ const subcategorySchema = new mongoose.Schema({
         required: [true, 'Name is required'],
         trim: true
     },
+    //  slug:{
+    //     type: String,
+    //      required: [true, 'Name is required'],
+    //     trim: true
+    // },
     category: {
         type: mongoose.Types.ObjectId,
         ref: 'Category',

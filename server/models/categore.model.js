@@ -10,6 +10,11 @@ const categorySchema = new mongoose.Schema({
         type: String,
         required: [true, 'Image is required'],
     },
+    slug:{
+        type: String,
+         required: [true, 'Name is required'],
+        trim: true
+    },
 
     discount: {
         type: Number,

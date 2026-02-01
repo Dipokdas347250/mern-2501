@@ -1,9 +1,10 @@
 const express = require('express');
-const { addSubcategory } = require('../../../controllers/subcategory');
+const { addSubcategory, updateSubcategory } = require('../../../controllers/subcategory');
 const router = express.Router();
 
 
 router.post("/add-subcategory", addSubcategory );
+router.patch("/update-subcategory/:id",updateSubcategory)
 
 
 
