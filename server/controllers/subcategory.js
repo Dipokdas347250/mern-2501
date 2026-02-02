@@ -28,13 +28,17 @@ exports.addSubcategory= asyncHandler(async (req, res, next) => {
 
 });
 exports.updateSubcategory= asyncHandler(async (req,res,next)=>{
-    let {id}= req.paramsk;
+    let {id}= req.params;
     let {name, category}= req.body;
     if(category){
-    await subcategorieModel.findOneAndUpdate({_id:id},{name,category},{new:true});
+    let subcatecory = await subcategorieModel.findOneAndUpdate({_id:id},{name,category},{new:true});
     await categoreModel.findOneAndUpdate({_id:category},{$push:{subcategory:id}},{new:true})
 
+    apiResponse(res, 200 , "subcategory createde",subcatecory)
+    }else{
+       let subcatecory = await subcategorieModel.findOneAndUpdate({_id:id},{name},{new:true});
+         apiResponse(res, 200 , "subcategory createde success",subcatecory)
+
     }
-    apiResponse(res, 200 , "subcategory createde")
 
 })
