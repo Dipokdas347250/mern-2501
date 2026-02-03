@@ -41,4 +41,17 @@ exports.updateSubcategory= asyncHandler(async (req,res,next)=>{
 
     }
 
+});
+
+exports.deleteSubcategory= asyncHandler(async(req,res,next)=>{
+    let {id} = req.params;
+    await subcategorieModel.findByIdAndDelete({_id: id})
+    await categoreModel.findOneAndUpdate({subcategories:id},{$pull:{subcategories:id}})
+    apiResponse(res , 200 , "subcategory deleteed")
+});
+
+exports.allSubcategory= asyncHandler(async(req,res,next)=>{
+    let subcatecory = await subcategorieModel.find({})
+    apiResponse(res, 200, "all subcategory fatch successfull", subcatecory)
+
 })
