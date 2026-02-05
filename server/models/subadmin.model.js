@@ -2,7 +2,7 @@ const {default: mongoose} = require('mongoose');
 
 const subadminSchema = new mongoose.Schema({
     user:{
-        type: mongoose.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId
     },
 
     storename: {
@@ -22,7 +22,10 @@ const subadminSchema = new mongoose.Schema({
     },
     status:{
         type: String,
-        enum: ['pending', 'success'],
+        enum: {
+      values: ["pending", "approved", "rejected"],
+      message: "{VALUE} is not a valid status"
+    },
         default: 'pending',
     },
     
