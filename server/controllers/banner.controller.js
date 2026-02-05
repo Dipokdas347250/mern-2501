@@ -22,4 +22,12 @@ exports.allBannerController= asyncHandler(async(req,res,next)=>{
     let banner = await bannerModel.find({})
     apiResponse(res, 200, "all banner fatch successfull", banner)
 
+});
+
+exports.updateBannerController= asyncHandler(async(req, res, next)=>{
+    res.send("update banner controller")
+});
+
+exports.deleteBannerController= asyncHandler(async(req, res, next)=>{
+    res.send("delete banner controller")
 })

@@ -4,6 +4,7 @@ const auth = require('./auth');
 const products = require('./products');
 const subcategory = require('./subcategory');
 const banner = require('./banner')
+const subadmin = require('./subadmin')
 
 
 
@@ -12,4 +13,5 @@ router.use("/auth" , auth);
 router.use("/products" , products)
 router.use("/subcategory" , subcategory)
 router.use("/banner" , banner)
+router.use("/subadmin", subadmin )
 module.exports = router;
