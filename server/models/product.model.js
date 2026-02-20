@@ -17,7 +17,7 @@ const productSchema = new mongoose.Schema(
     },
     description:{
          type:String,
-         require: [true,"title is description"],
+         require: [true,"description is required"],
 
     },
     image:[String ],
@@ -28,10 +28,33 @@ const productSchema = new mongoose.Schema(
     diccountprice:{
         type:Number,
         
+    },
+   category: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Category',
+    },
+    variantType:{
+          type:String,
+          enum:["singlevariant", "multivariant"],
+          default:"singlevariant"
+    },
+    variant: [
+        {
+        type: mongoose.Types.ObjectId,
+        ref: 'Variant',
     }
+],
+    review: [
+        {
+        type: mongoose.Types.ObjectId,
+        ref: 'Review',
+    }
+],
+
    
 }, {
     timestamps: true,
+    versionKey: false
 });
 
 module.exports = mongoose.model("Product", productSchema);
