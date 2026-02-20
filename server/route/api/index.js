@@ -5,6 +5,7 @@ const products = require('./products');
 const subcategory = require('./subcategory');
 const banner = require('./banner')
 const subadmin = require('./subadmin')
+const mainproduct = require('./mainproduct')
 
 
 
@@ -14,4 +15,5 @@ router.use("/products" , products)
 router.use("/subcategory" , subcategory)
 router.use("/banner" , banner)
 router.use("/subadmin", subadmin )
+router.use("/mainproduct",  mainproduct)
 module.exports = router;

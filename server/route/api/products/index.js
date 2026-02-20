@@ -7,6 +7,7 @@ const { isAuthorizeRole } = require('../../../middleware/isAuthorizeRole');
 
 const router = express.Router();
 
+//   CATEGORY ROUTES
 
 router.post("/allproducts" ,validAuthorize,isAuthorizeRole("admin","subadmin"),upload.single('image'),productsController);
 router.patch("/update-category/:id" ,validAuthorize,isAuthorizeRole("admin","subadmin"),upload.single('image') , updateCategoryController);
