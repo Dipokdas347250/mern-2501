@@ -15,14 +15,18 @@ exports.productsController = asyncHandler(async (req, res, next) => {
   lower: true,            
   trim: true         
 })
+let {categorey} = req.body;
+if(!categorey){
+    apiResponse(res, 400, "category is required")
+}
     let image = `${process.env.SERVER_URL}/${filename}`;
 
-    let categorey = new categoreModel({
+    let categoreys = new categoreModel({
         name, discount, subcategories, image, slug
 
     })
-    await categorey.save();
-    apiResponse(res, 200, "Product created successfully", categorey);
+    await categoreys.save();
+    apiResponse(res, 200, "Product created successfully", categoreys);
 });
 
 exports.updateCategoryController = asyncHandler(async(req,res,next)=>{

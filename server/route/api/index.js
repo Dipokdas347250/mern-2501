@@ -6,6 +6,7 @@ const subcategory = require('./subcategory');
 const banner = require('./banner')
 const subadmin = require('./subadmin')
 const mainproduct = require('./mainproduct')
+const variant = require('./variant')
 
 
 
@@ -16,4 +17,5 @@ router.use("/subcategory" , subcategory)
 router.use("/banner" , banner)
 router.use("/subadmin", subadmin )
 router.use("/mainproduct",  mainproduct)
+router.use("/variant",  variant)
 module.exports = router;
