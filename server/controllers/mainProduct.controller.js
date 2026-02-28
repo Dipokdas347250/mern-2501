@@ -52,12 +52,18 @@ exports.deleteProductController = asyncHandler(async (req, res) => {
 })
 
 exports.allProductController = asyncHandler(async(req,res)=>{
-  let products = await productModel.find({})
+  let products = await productModel.find({}).populate({
+    path:"variant",
+    select: "size color sku"
+  })
   apiResponse(res,200,"all product", products)
 })
 exports.singleProductController = asyncHandler(async(req,res)=>{
   let { slug } = req.params;
-  let products = await productModel.findOne({slug})
+  let products = await productModel.findOne({slug}).populate({
+    path:"variant",
+    select: "size color sku"
+  })
   if(!products){
     apiResponse(res,404,"product not found")
   }else{
