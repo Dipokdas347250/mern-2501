@@ -7,6 +7,7 @@ const banner = require('./banner')
 const subadmin = require('./subadmin')
 const mainproduct = require('./mainproduct')
 const variant = require('./variant')
+const review = require('./review')
 
 
 
@@ -18,4 +19,5 @@ router.use("/banner" , banner)
 router.use("/subadmin", subadmin )
 router.use("/mainproduct",  mainproduct)
 router.use("/variant",  variant)
+router.use("/review", review)
 module.exports = router;

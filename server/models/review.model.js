@@ -5,6 +5,7 @@ const reviewSchema = new mongoose.Schema(
     user:{
         type: mongoose.Types.ObjectId,
         ref: 'User',
+         require: [true,"user is required"],
     } ,
     comment:{
          type:String,
@@ -18,6 +19,10 @@ const reviewSchema = new mongoose.Schema(
     },
     image:{
         type:String,
+    },
+    product:{
+        type:mongoose.Types.ObjectId,
+        ref: "Product"
     }
    
 

@@ -39,7 +39,13 @@ const userSchema = new mongoose.Schema({
     verified:{
         type:Boolean,
         default:false,
-    }
+    },
+    review:[
+        {
+        type:mongoose.Types.ObjectId,
+        ref:"Review"
+        }
+    ]
 }, 
 {
     timestamps: true,
