@@ -7,9 +7,11 @@ const { globalerrorhandler } = require('./utils/globalerror');
 dbconfig()
 const session = require('express-session')
 const {MongoStore} = require('connect-mongo');
-
 app.use(express.static('uploads'));
 const port = process.env.PORT ;
+
+// const dns = require('dbs')
+// dns.setServer(["1.1.1.1"])
 
 app.use(express.json())
 app.use(session({
