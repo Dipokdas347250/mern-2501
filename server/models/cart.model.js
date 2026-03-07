@@ -17,6 +17,11 @@ const cartSchema = new mongoose.Schema(
         variant:{
             type:mongoose.Types.ObjectId,
             ref: "Variant"
+        },
+        
+        totalprice:{
+            type: Number,
+            require:[true , "totalprice is require"]
         }
   
    
