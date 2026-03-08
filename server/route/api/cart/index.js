@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.post("/add-cart", validAuthorize, addCartController)
-router.get("/singlecart/:user" , singleCartController)
+router.get("/singlecart/:user" , validAuthorize, singleCartController)
 
 
 

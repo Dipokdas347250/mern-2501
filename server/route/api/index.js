@@ -9,6 +9,8 @@ const mainproduct = require('./mainproduct')
 const variant = require('./variant')
 const review = require('./review')
 const cart = require('./cart')
+const checkout = require('./checkout')
+
 
 
 
@@ -22,4 +24,6 @@ router.use("/mainproduct",  mainproduct)
 router.use("/variant",  variant)
 router.use("/review", review)
 router.use("/cart", cart)
+router.use("/checkout", checkout)
+
 module.exports = router;
