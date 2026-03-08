@@ -5,8 +5,9 @@ const asyncHandler = require("../utils/asyncHandler");
 
 exports.addCartController = asyncHandler(async(req ,res)=>{
     
-    let {variant,user,quntity,product}= req.body;
-    let cartData = await cartModel.findOne({product}).populate({
+    let {variant,quntity,product}= req.body;
+    let user = req.session.user._id;
+    let cartData = await cartModel.findOne({product,user,variant }).populate({
       path: "product",
       selete: "price"
     })
@@ -58,9 +59,18 @@ exports.addCartController = asyncHandler(async(req ,res)=>{
 
 exports.singleCartController = asyncHandler(async(req, res)=>{
    let {user} = req.params;
+  
+  
+
    let getCartlist = await cartModel.find({user}).populate({
       path:"product",
       select: "title price image"
-   }).select("-user -updatedAt -createdAt")
+   }).populate({
+     path:"variant", 
+   }).populate({
+      path:"user",
+      select: "fullname"
+   }) 
+   .select(" -updatedAt -createdAt")
    apiResponse(res, 200 , "single cart fatch ...",getCartlist)
 })
