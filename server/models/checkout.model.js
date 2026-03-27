@@ -46,7 +46,7 @@ const orderSchema = new Schema({
         {
             product: {
                 type: mongoose.Types.ObjectId,
-                ref: "product"
+                ref: "Product"
             },
             variant: {
                 type: mongoose.Types.ObjectId,

@@ -21,5 +21,14 @@ exports.checkoutController = asyncHandler(async (req, res) => {
 
 exports.getallordersController = asyncHandler(async(req,res)=>{
     let allorder = await checkoutModel.find({})
+    .populate({
+        path: "user",
+        select: "fullname email -_id"
+    })
+    .populate({
+        path: "items.product",
+        select: "title description image price -_id"
+        
+    })
     apiResponse(res, 200, "order fatch successfull...", allorder)
 })
