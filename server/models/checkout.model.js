@@ -21,7 +21,11 @@ const shippingSchema = new Schema({
     postcode:{
         type: String
     },
-})
+},
+{
+    _id: false
+}
+)
 
 
 
@@ -31,7 +35,7 @@ const orderSchema = new Schema({
         ref: "User"
     },
     totalprice:{
-        type: String,
+        type: Number,
         require: true,
     },
     cart:{
@@ -44,6 +48,11 @@ const orderSchema = new Schema({
         enum: ["cod ", "online"],
         require: true,
     },
+    deliveryStatus:{
+        type: String,
+        enum: ["pending", "confirm", "deliverd", "cenceled"],
+        default: "pending"
+    }
 })
 
 module.exports = mongoose.model("Order",orderSchema)
