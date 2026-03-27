@@ -62,8 +62,8 @@ const orderSchema = new Schema({
     shipping: shippingSchema,
     paymentMethod: {
         type: String,
-        enum: ["cod ", "online"],
-        require: true,
+        enum: ["cashOnDelivery", "online"],
+        required: true,
     },
     deliveryStatus: {
         type: String,

@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 
-router.post("./checkout" , checkoutController)
+router.post("/checkout_order" , checkoutController)
 
 
 
