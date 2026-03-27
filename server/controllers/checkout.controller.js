@@ -4,7 +4,7 @@ const { apiResponse } = require("../utils/apiResponse");
 const asyncHandler = require("../utils/asyncHandler");
 
 exports.checkoutController = asyncHandler(async (req, res) => {
-    // apiResponse(res, 200, "order successfull...")
+    
     let { user, paymentMethod, shipping, items } = req.body;
     let cartItems = await cartModel.find({ user })
 
@@ -16,5 +16,10 @@ exports.checkoutController = asyncHandler(async (req, res) => {
     });
 
     await placeOrder.save()
-    res.send(placeOrder)
+    apiResponse(res, 201, "order successfull...", placeOrder)
+})
+
+exports.getallordersController = asyncHandler(async(req,res)=>{
+    let allorder = await checkoutModel.find({})
+    apiResponse(res, 200, "order fatch successfull...", allorder)
 })
