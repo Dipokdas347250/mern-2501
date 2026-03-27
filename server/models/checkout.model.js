@@ -1,58 +1,75 @@
 const mongoose = require("mongoose");
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 
 const shippingSchema = new Schema({
-    phone:{
+    phone: {
         type: String,
         require: true,
     },
-    address:{
+    address: {
         type: String,
         require: true,
     },
-    city:{
+    city: {
         type: String,
         require: true,
     },
-    district:{
+    district: {
         type: String,
         require: true,
     },
-    postcode:{
+    postcode: {
         type: String
     },
 },
-{
-    _id: false
-}
+    {
+        _id: false
+    }
 )
 
 
 
 const orderSchema = new Schema({
-    user:{
+    user: {
         type: mongoose.Types.ObjectId,
         ref: "User"
     },
-    totalprice:{
+    totalprice: {
         type: Number,
         require: true,
     },
-    cart:{
-        type: mongoose.Types.ObjectId,
-        ref: "Cart"
-    },
-    shipping : shippingSchema,
-    paymentMethod:{
+    // cart:{
+    //     type: mongoose.Types.ObjectId,
+    //     ref: "Cart"
+    // },
+    items: [
+        {
+            product: {
+                type: mongoose.Types.ObjectId,
+                ref: "product"
+            },
+            variant: {
+                type: mongoose.Types.ObjectId,
+                ref: "Variant"
+            },
+            quntity: {
+                type: Number,
+                default: 1
+            },
+        },
+
+    ],
+    shipping: shippingSchema,
+    paymentMethod: {
         type: String,
         enum: ["cod ", "online"],
         require: true,
     },
-    deliveryStatus:{
+    deliveryStatus: {
         type: String,
         enum: ["pending", "confirm", "deliverd", "cenceled"],
         default: "pending"
     }
 })
 
-module.exports = mongoose.model("Order",orderSchema)
+module.exports = mongoose.model("Order", orderSchema)
