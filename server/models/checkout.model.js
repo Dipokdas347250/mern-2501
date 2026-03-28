@@ -65,10 +65,18 @@ const orderSchema = new Schema({
         enum: ["cashOnDelivery", "online"],
         required: true,
     },
+    transaction_id:{
+        type:String
+    },
     deliveryStatus: {
         type: String,
         enum: ["pending", "confirm", "deliverd", "cenceled"],
         default: "pending"
+    },
+    paymentStatus:{
+        type: String,
+        enum: ["paid" , "unpaid"],
+        default: "unpaid" 
     }
 })
 
