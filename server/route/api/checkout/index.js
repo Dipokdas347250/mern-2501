@@ -1,11 +1,11 @@
 const express = require('express');
-const { checkoutController, getallordersController } = require('../../../controllers/checkout.controller');
+const { checkoutController, getallordersController, paymentSuccessController } = require('../../../controllers/checkout.controller');
 const router = express.Router();
 
 
 
 router.post("/checkout_order" , checkoutController)
-// router.post("/payment_success")
+router.post("/payment_success/:id" , paymentSuccessController)
 router.get("/all-orders",getallordersController)
 
 
