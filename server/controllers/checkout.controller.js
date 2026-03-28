@@ -56,7 +56,7 @@ exports.checkoutController = asyncHandler(async (req, res) => {
             currency: 'BDT',
             tran_id: transaction_id,
             success_url: `http://localhost:8080/api/v1/api/checkout/payment_success/${transaction_id}`,
-            fail_url: 'http://localhost:3030/fail',
+            fail_url: 'http://localhost:8080/api/v1/api/checkout/payment_fail',
             cancel_url: 'http://localhost:3030/cancel',
             ipn_url: 'http://localhost:3030/ipn',
             shipping_method: 'Courier',
@@ -98,6 +98,10 @@ exports.paymentSuccessController = asyncHandler(async (req, res) => {
     let { id } = req.params;
     let upDatepayment = await checkoutModel.findOneAndUpdate({ transaction_id: id }, { paymentStatus: "paid" }, { new: true })
     apiResponse(res , 200 , "paument successfull",upDatepayment)
+})
+exports.paymentFailController = asyncHandler(async (req, res) => {
+   
+    apiResponse(res , 500 , "paument fail")
 })
 
 exports.getallordersController = asyncHandler(async (req, res) => {
