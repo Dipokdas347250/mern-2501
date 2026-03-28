@@ -5,6 +5,7 @@ const router = express.Router();
 
 
 router.post("/checkout_order" , checkoutController)
+// router.post("/payment_success")
 router.get("/all-orders",getallordersController)
 
 
