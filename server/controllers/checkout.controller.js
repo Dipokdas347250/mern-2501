@@ -103,6 +103,10 @@ exports.paymentFailController = asyncHandler(async (req, res) => {
    
     apiResponse(res , 500 , "paument fail")
 })
+exports.paymentCancelController = asyncHandler(async (req, res) => {
+   
+    apiResponse(res , 500 , "paument cancel")
+})
 
 exports.getallordersController = asyncHandler(async (req, res) => {
     let allorder = await checkoutModel.find({})
