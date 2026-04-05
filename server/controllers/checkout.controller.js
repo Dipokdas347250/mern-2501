@@ -16,9 +16,7 @@ exports.checkoutController = asyncHandler(async (req, res) => {
     let { user, paymentMethod, shipping } = req.body;
     let cartItems = await cartModel.find({ user }).populate({
         path: "product",
-
     })
-
     let totalprice = cartItems.reduce((curr, prev) => {
         return prev.totalprice + curr
     }, 0)
