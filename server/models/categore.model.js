@@ -15,6 +15,11 @@ const categorySchema = new mongoose.Schema({
          required: [true, 'Name is required'],
         trim: true
     },
+    uploadResultId: {
+      type: String,
+
+    },
+
 
     discount: {
         type: Number,
