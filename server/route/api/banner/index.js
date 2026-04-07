@@ -5,10 +5,13 @@ const { validAuthorize } = require('../../../middleware/validAuthorize');
 const { isAuthorizeRole } = require('../../../middleware/isAuthorizeRole');
 const router = express.Router();
 
-router.post("/add-banner",validAuthorize,isAuthorizeRole("admin"), upload.single("image"), addBannerController)
+router.post("/add-banner",
+    validAuthorize,
+    isAuthorizeRole("admin"), 
+    upload.single("image"), addBannerController)
 router.get("/all-banner", allBannerController)
 router.patch("/update-banner", updateBannerController)
-router.delete("/delete-banner",deleteBannerController)
+router.delete("/delete-banner/:id",deleteBannerController)
 
 
 

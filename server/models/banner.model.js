@@ -10,7 +10,11 @@ const bannerSchema = new mongoose.Schema({
         type: String,
         trim: true
 
-    }
+    },
+    uploadResultId: {
+      type: String,
+
+    },
    
 }, {
     timestamps: true,

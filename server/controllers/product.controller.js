@@ -9,29 +9,22 @@ const cloudinary = require("../utils/cloudinary");
 
 exports.productsController = asyncHandler(async (req, res, next) => {
     let { name, discount, subcategories } = req.body;
-    let { filename} = req.file;
-    
-    
-     
+    let { filename } = req.file;
 
-  
-      
-     const uploadResult = await cloudinary.uploader
-       .upload(
-           req.file.path
-       )
-       .catch((error) => {
-           console.log(error);
-       });
+    const uploadResult = await cloudinary.uploader
+        .upload(
+            req.file.path
+        )
+        .catch((error) => {
+            console.log(error);
+        });
 
-       
-
-       let imagepath = path.join(__dirname, "../uploads")
-       fs.unlink(`${imagepath}/${filename}`, async (err) => {
-           if (err) {
-               apiResponse(res, 500, err.message);
-              }
-         })
+    let imagepath = path.join(__dirname, "../uploads")
+    fs.unlink(`${imagepath}/${filename}`, async (err) => {
+        if (err) {
+            apiResponse(res, 500, err.message);
+        }
+    })
 
 
     let slug = slugify(name, {
@@ -46,7 +39,7 @@ exports.productsController = asyncHandler(async (req, res, next) => {
     }
 
     let categoreys = new categoreModel({
-        name, discount, subcategories, image: uploadResult.url, slug,uploadResultId: uploadResult.public_id
+        name, discount, subcategories, image: uploadResult.url, slug, uploadResultId: uploadResult.public_id
 
     })
     await categoreys.save();
@@ -88,7 +81,7 @@ exports.deleteCategoryController = asyncHandler(async (req, res, next) => {
     let { id } = req.params;
     let categoryDelete = await categoreModel.findOneAndDelete({ _id: id })
     const deletecloudinaryimage = await cloudinary.uploader.destroy(categoryDelete.uploadResultId)
-    
+
     apiResponse(res, 200, "category deleted successfully");
 
 });

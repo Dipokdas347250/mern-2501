@@ -1,16 +1,31 @@
 const bannerModel = require("../models/banner.model");
 const { apiResponse } = require("../utils/apiResponse");
 const asyncHandler = require("../utils/asyncHandler");
+const cloudinary = require("../utils/cloudinary");
+const path = require("path");
+const fs = require("fs");
 
-exports.addBannerController=asyncHandler(async(req,res, next) => {
-    let {filename} = req.file;
-    let {url} = req.body;
-    let image = `${process.env.SERVER_URL}/${filename}`;
-
+exports.addBannerController = asyncHandler(async (req, res, next) => {
+    let { filename } = req.file;
+    let { url } = req.body;
+    const uploadResult = await cloudinary.uploader
+        .upload(
+            req.file.path
+        )
+        .catch((error) => {
+            console.log(error);
+        });
+    let imagepath = path.join(__dirname, "../uploads")
+    fs.unlink(`${imagepath}/${filename}`, async (err) => {
+        if (err) {
+            apiResponse(res, 500, err.message);
+        }
+    })
 
     let banner = new bannerModel({
-        image,
-        url
+        image: uploadResult.url,
+        url,
+        uploadResultId: uploadResult.public_id
     })
 
     await banner.save()
@@ -18,16 +33,20 @@ exports.addBannerController=asyncHandler(async(req,res, next) => {
 
 });
 
-exports.allBannerController= asyncHandler(async(req,res,next)=>{
+exports.allBannerController = asyncHandler(async (req, res, next) => {
     let banner = await bannerModel.find({})
     apiResponse(res, 200, "all banner fatch successfull", banner)
 
 });
 
-exports.updateBannerController= asyncHandler(async(req, res, next)=>{
+exports.updateBannerController = asyncHandler(async (req, res, next) => {
     res.send("update banner controller")
 });
 
-exports.deleteBannerController= asyncHandler(async(req, res, next)=>{
-    res.send("delete banner controller")
+exports.deleteBannerController = asyncHandler(async (req, res, next) => {
+    let { id } = req.params;
+    let bannerDelete = await bannerModel.findOneAndDelete({ _id: id })
+    const deletecloudinaryimage = await cloudinary.uploader.destroy(bannerDelete.uploadResultId)
+
+    apiResponse(res, 200, "banner deleted successfully");
 })
