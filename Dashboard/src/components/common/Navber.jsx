@@ -2,7 +2,13 @@ import React from 'react'
 
 const Navber = () => {
   return (
-    <div>Navber</div>
+    <>
+    <nav>
+      <div className="">
+        
+      </div>
+    </nav>
+    </>
   )
 }
 

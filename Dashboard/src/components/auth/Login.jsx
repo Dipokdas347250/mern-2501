@@ -7,8 +7,6 @@ export default function GlassLogin() {
   });
 
   const [error, setError] = useState("");
-
-  // Handle input change
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -16,44 +14,35 @@ export default function GlassLogin() {
     });
   };
 
-  // Handle submit
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Basic validation
     if (!formData.email || !formData.password) {
       setError("All fields are required!");
       return;
     }
-
     if (!formData.email.includes("@")) {
       setError("Enter a valid email!");
       return;
     }
 
-    // Fake login (replace with API)
-    console.log("Login Data:", formData);
 
     setError("");
-    alert("Login Successful 🚀");
+    alert("Login Successful");
   };
 
   return (
     <div className="relative h-screen flex items-center justify-center bg-linear-to-br from-[#022c22] to-[#064e3b] overflow-hidden">
 
-      {/* Glass Card */}
+   
       <form
         onSubmit={handleSubmit}
         className="w-150 h-150 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_0_60px_rgba(34,197,94,0.3)] flex flex-col items-center justify-center text-white"
       >
         <h2 className="text-2xl mb-4">LOGIN</h2>
-
-        {/* Error */}
         {error && (
           <p className="text-red-400 text-sm mb-2">{error}</p>
         )}
-
-        {/* Email */}
         <input
           type="email"
           name="email"
@@ -62,8 +51,6 @@ export default function GlassLogin() {
           onChange={handleChange}
           className="w-100 mb-3 p-4 rounded-lg bg-white/20 outline-none"
         />
-
-        {/* Password */}
         <input
           type="password"
           name="password"
@@ -73,7 +60,6 @@ export default function GlassLogin() {
           className="w-100 mb-4 p-4 rounded-lg bg-white/20 outline-none"
         />
 
-        {/* Button */}
         <button
           type="submit"
           className="px-20 py-4 bg-green-500 rounded-full hover:bg-green-400 transition"
