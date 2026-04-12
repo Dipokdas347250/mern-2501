@@ -8,8 +8,12 @@ const RootLayout = () => {
     <>
     <Navber/>
     <div className="flex">
+      <div className="w-[20%]">
         <Sideber/>
+      </div>
+      <div className="w-[80%]">
         <Outlet/>
+      </div>
     </div>
     </>
   )

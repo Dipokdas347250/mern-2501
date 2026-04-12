@@ -11,7 +11,7 @@ import { MdOutlineDarkMode } from "react-icons/md";
 const Navber = () => {
   return (
     <>
-    <nav className=' py-3 px-5 bg-linear-to-br from-[#022c22] to-[#064e3b]'>
+    <nav className=' py-3 px-5 bg-linear-to-br from-[#022c22] to-[#064e3b] border-b border-black  sticky top-0 z-50'>
       <div className="flex items-center justify-between">
        <div className="">
         <img src={logo} alt="logo" />
