@@ -21,7 +21,7 @@ const data = [
 
 export default function Dashboard() {
   return (
-    <div className="min-h-screen bg-[#064e3b]  text-white p-6">
+    <div className="min-h-screen bg-[#064e3b]/90  text-white p-6">
 
       {/* Navbar */}
       <div className="flex justify-between items-center mb-8">
