@@ -22,21 +22,6 @@ const data = [
 export default function Dashboard() {
   return (
     <div className="min-h-screen bg-[#064e3b]/90  text-white p-6">
-
-      {/* Navbar */}
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-2xl font-bold">Dashboard</h1>
-
-        <div className="flex items-center gap-4">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="bg-white/10 px-4 py-2 rounded-xl outline-none"
-          />
-          <div className="w-10 h-10 rounded-full bg-gray-500"></div>
-        </div>
-      </div>
-
       {/* Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
         <Card title="Revenue" value="$12,540" />

@@ -6,7 +6,6 @@ import { useAuthStore } from '../zustendstore/AuthStore';
 const PrivateRoute = ({children}) => {
   const navigate = useNavigate();
   const {setUser, user} = useAuthStore()
-  console.log(user);
   
   useEffect(()=>{
     
