@@ -1,5 +1,5 @@
 const express = require('express');
-const { signupController, loginController, alluserController, verifyOtpController, resendOtpController } = require('../../../controllers/auth.controller');
+const { signupController, loginController, alluserController, verifyOtpController, resendOtpController, getMeController } = require('../../../controllers/auth.controller');
 const { validAuthorize } = require('../../../middleware/validAuthorize');
 const {isAuthorizeRole } = require('../../../middleware/isAuthorizeRole');
 // const { vailddataCheker } = require('../../../helpers/vailddatauser');
@@ -16,6 +16,7 @@ router.get("/alluser", validAuthorize,
    isAuthorizeRole("admin","subadmin"),
     alluserController)
 
+router.get("/getme",validAuthorize,getMeController)
 
 
 

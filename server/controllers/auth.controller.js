@@ -134,6 +134,12 @@ exports.alluserController = asyncHandler(async(req,res)=>{
    apiResponse(res,200,"fetch all users successful",users)
 })
 
+exports.getMeController = asyncHandler(async(req,res)=>{
+  let user = await userModel.findOne({email: req?.session?.user?.email}).select(" _id fullname email role")
+
+  apiResponse(res,200,"fetch user successful",user)
+})
+
 
 
 
