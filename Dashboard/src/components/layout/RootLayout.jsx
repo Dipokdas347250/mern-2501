@@ -2,11 +2,13 @@ import React from 'react'
 import Navber from '../common/Navber'
 import Sideber from '../common/Sideber'
 import { Outlet } from 'react-router'
+import PrivateRoute from '../private/PrivateRoute'
 
 const RootLayout = () => {
   return (
     <>
-    <Navber/>
+   <PrivateRoute>
+     <Navber/>
     <div className="flex">
       <div className="w-[20%]">
         <Sideber/>
@@ -15,6 +17,7 @@ const RootLayout = () => {
         <Outlet/>
       </div>
     </div>
+   </PrivateRoute>
     </>
   )
 }

@@ -16,7 +16,7 @@ router.get("/alluser", validAuthorize,
    isAuthorizeRole("admin","subadmin"),
     alluserController)
 
-router.get("/getme",validAuthorize,getMeController)
+router.get("/getme",validAuthorize, isAuthorizeRole("admin","subadmin"),getMeController)
 
 
 

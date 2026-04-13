@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 export default function GlassLogin() {
+  const navegate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -33,7 +35,7 @@ export default function GlassLogin() {
     
       axios.post("http://localhost:8080/api/v1/api/auth/login", formData, { withCredentials: true })
         .then((response) => {
-          console.log("Response:", response.data);
+          navegate("/")
         })
         .catch((error) => {
           console.error("Error:", error);
