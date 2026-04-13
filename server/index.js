@@ -6,7 +6,14 @@ const _ = require('./route');
 const { globalerrorhandler } = require('./utils/globalerror');
 dbconfig()
 const session = require('express-session')
+const cors = require('cors'); 
 const {MongoStore} = require('connect-mongo');
+
+app.use(cors({
+    origin: ['http://localhost:5173', 'http://localhost:3000'], 
+    credentials: true, 
+}));
+
 app.use(express.static('uploads'));
 const port = process.env.PORT ;
 
