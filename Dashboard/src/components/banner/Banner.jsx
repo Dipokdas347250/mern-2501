@@ -1,10 +1,11 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const AddBanner = () => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
@@ -13,7 +14,13 @@ const AddBanner = () => {
 
     console.log("Submitting:", image, url);
 
-  
+    
+    await axios.post("http://localhost:8080/api/v1/api/banner/add-banner", formData,{withCredentials: true }, {
+     headers: {
+    "Content-Type": "multipart/form-data",
+    },
+    });
+   
 
   };
 
