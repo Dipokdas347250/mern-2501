@@ -4,7 +4,7 @@ import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Login from "./components/auth/Login";
 import AllBanner from "./components/pages/AllBanner";
-import GetBanner from "./components/banner/GetBanner";
+import Get_Banner from "./components/pages/Get_Banner";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
       { index: true, Component: Home },
       { path: "about", Component: About },
       { path: "banner", Component: AllBanner },
-      { path: "banner/all", Component: GetBanner },
+      { path: "banner/all", Component: Get_Banner },
     ],
   },
   {

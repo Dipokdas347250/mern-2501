@@ -33,7 +33,7 @@ export default function GlassLogin() {
     setError("");
     
     
-      axios.post("http://localhost:8080/api/v1/api/auth/login", formData, { withCredentials: true })
+      axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, formData, { withCredentials: true })
         .then((response) => {
           navegate("/")
         })
@@ -75,7 +75,7 @@ export default function GlassLogin() {
 
         <button
           type="submit"
-          className="px-20 py-4 bg-green-500 rounded-full hover:bg-green-400 transition"
+          className="px-20 py-4 bg-green-500 rounded-full hover:bg-green-400 transition cursor-pointer"
         >
           Sign In
         </button>

@@ -25,6 +25,7 @@ app.use(session({
     name: 'ecommerce-session',
     secret: process.env.SESSION_SECRET,
     resave: false,
+    rolling: true,
     saveUninitialized: true,
     cookie: { secure: false},
     store: MongoStore.create({
