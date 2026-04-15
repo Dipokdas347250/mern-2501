@@ -5,6 +5,8 @@ import About from "./components/pages/About";
 import Login from "./components/auth/Login";
 import AllBanner from "./components/pages/AllBanner";
 import Get_Banner from "./components/pages/Get_Banner";
+import Add_category from "./components/category/Add_category";
+import All_category from "./components/category/All_category";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,8 @@ const router = createBrowserRouter([
       { path: "about", Component: About },
       { path: "banner", Component: AllBanner },
       { path: "banner/all", Component: Get_Banner },
+      { path: "all-category", Component: All_category },
+      { path: "add-category", Component: Add_category },
     ],
   },
   {

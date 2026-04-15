@@ -59,17 +59,22 @@ const Sideber = () => {
               <h2 className=' text-white text-lg font-semibold uppercase'>Category</h2>
             </div>
             <div className="ml-5">
-              <div className="">
-              <div className="flex items-center gap-3 p-2 cursor-pointer duration-300 ease-in-out hover:bg-green-300/20 rounded-r-lg border-l-4 border-[#064e3b] hover:border-green-300">
-                <AiFillProduct className='text-[16px] text-white' />
-                <h2 className=' text-white text-lg font-semibold'>All Category</h2>
-              </div>
-            </div>
+             
             <div className="">
+              <Link to="/add-category">
               <div className="flex items-center gap-3 p-2 cursor-pointer duration-300 ease-in-out hover:bg-green-300/20 rounded-r-lg border-l-4 border-[#064e3b] hover:border-green-300">
                 <AiFillProduct className='text-[16px] text-white' />
                 <h2 className=' text-white text-lg font-semibold'>Add Category</h2>
               </div>
+              </Link>
+            </div>
+             <div className="">
+                <Link to="/all-category">
+              <div className="flex items-center gap-3 p-2 cursor-pointer duration-300 ease-in-out hover:bg-green-300/20 rounded-r-lg border-l-4 border-[#064e3b] hover:border-green-300">
+                <AiFillProduct className='text-[16px] text-white' />
+                <h2 className=' text-white text-lg font-semibold'>All Category</h2>
+              </div>
+               </Link>
             </div>
             </div>
             </div>
