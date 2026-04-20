@@ -41,16 +41,20 @@ const Sideber = () => {
             </div>
             <div className="ml-5">
               <div className="">
+              <Link to="/add-product">
               <div className="flex items-center gap-3 p-2 cursor-pointer duration-300 ease-in-out hover:bg-green-300/20 rounded-r-lg border-l-4 border-[#064e3b] hover:border-green-300">
                 <FaShopify className='text-[16px] text-white' />
                 <h2 className=' text-white text-lg font-semibold'>Add Products</h2>
               </div>
+              </Link>
             </div>
             <div className="">
+              <Link to="/all-product">
               <div className="flex items-center gap-3 p-2 cursor-pointer duration-300 ease-in-out hover:bg-green-300/20 rounded-r-lg border-l-4 border-[#064e3b] hover:border-green-300">
                 <FaShopify className='text-[16px] text-white' />
                 <h2 className=' text-white text-lg font-semibold'> All Products</h2>
               </div>
+              </Link>
             </div>
             </div>
             </div>
