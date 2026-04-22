@@ -19,7 +19,7 @@ import { Link } from 'react-router';
 const Sideber = () => {
   return (
     <>
-      <section className='w-[20%]  bg-[#064e3b] border-r border-black pt-10 pb-25 fixed px-2  h-full overflow-scroll scrollbar-hide'>
+      <section className='w-[20%]  bg-[#064e3b] border-r border-black pt-10 pb-25 fixed px-2  h-full overflow-scroll scrollmain'>
         <div className=" ">
           <div className="p-2 flex justify-between items-center gap-3 cursor-pointer">
 

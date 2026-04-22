@@ -73,14 +73,14 @@ const AddCategory = () => {
             />
           </div>
 
-          <div>
+          <div >
             <label className="block text-gray-300 mb-2">
               Upload Image
             </label>
             <input
               type="file"
               onChange={(e) => setImage(e.target.files[0])}
-              className="w-full p-2 rounded-lg bg-white/20 text-white file:bg-green-500 file:border-none file:px-4 file:py-2 file:rounded-md"
+              className="w-full p-2 rounded-lg bg-white/20 text-white file:bg-green-500 file:border-none file:px-4 file:py-2 file:rounded-md cursor-pointer"
               required
             />
           </div>
@@ -98,7 +98,7 @@ const AddCategory = () => {
 
           <button
             type="submit"
-            className="w-full py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition"
+            className="w-full py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition cursor-pointer"
           >
             Add Category
           </button>

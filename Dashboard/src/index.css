@@ -27,3 +27,6 @@
 .animate-float {
   animation: float 6s ease-in-out infinite;
 } */
+ .scrollmain::-webkit-scrollbar {
+ display: none;
+}
