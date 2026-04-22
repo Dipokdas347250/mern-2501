@@ -9,8 +9,11 @@ const cloudinary = require("../utils/cloudinary");
 
 exports.productsController = asyncHandler(async (req, res, next) => {
     let { name, discount, subcategories } = req.body;
+
+    
     let { filename } = req.file;
 
+    console.log(req.body);
     const uploadResult = await cloudinary.uploader
         .upload(
             req.file.path
@@ -33,16 +36,15 @@ exports.productsController = asyncHandler(async (req, res, next) => {
         lower: true,
         trim: true
     })
-    let { categorey } = req.body;
-    if (!categorey) {
-        apiResponse(res, 400, "category is required")
-    }
+
 
     let categoreys = new categoreModel({
         name, discount, subcategories, image: uploadResult.url, slug, uploadResultId: uploadResult.public_id
 
     })
+
     await categoreys.save();
+    console.log(categoreys);
     apiResponse(res, 200, "Product created successfully", categoreys);
 });
 
