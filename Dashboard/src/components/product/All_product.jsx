@@ -23,7 +23,7 @@ const All_product = () => {
     <>
     <div className="min-h-screen bg-[#064e3b]/90 p-6">
       <h2 className="text-2xl font-bold text-white mb-6">
-        All Categories
+        All product
       </h2>
 
       <div className="grid md:grid-cols-3 gap-6">
