@@ -48,11 +48,11 @@ const Add_product = () => {
 
           <div>
             <label className="block text-gray-300 mb-2">
-              Category Name
+              Product Name
             </label>
             <input
               type="text"
-              placeholder="Enter category name"
+              placeholder="Enter Product name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full p-3 rounded-lg bg-white/20 text-white outline-none"
@@ -100,7 +100,7 @@ const Add_product = () => {
             type="submit"
             className="w-full py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition cursor-pointer"
           >
-            Add Category
+            Add Product
           </button>
 
         </form>
