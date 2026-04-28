@@ -55,7 +55,7 @@ export default function GlassLogin() {
       >
         <h2 className="text-3xl mb-10 font-bold ">Admin Panel</h2>
         {error && (
-          <p className="text-red-400 text-sm mb-2">{error}</p>
+          <p className="text-red-500 text-xl mb-4">{error}</p>
         )}
         <input
           type="email"
