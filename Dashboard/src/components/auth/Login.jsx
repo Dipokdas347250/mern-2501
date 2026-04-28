@@ -46,13 +46,14 @@ export default function GlassLogin() {
 
   return (
     <div className="relative h-screen flex items-center justify-center bg-linear-to-br from-[#022c22] to-[#064e3b] overflow-hidden">
+      
 
    
       <form
         onSubmit={handleSubmit}
         className="w-150 h-150 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_0_60px_rgba(34,197,94,0.3)] flex flex-col items-center justify-center text-white"
       >
-        <h2 className="text-2xl mb-4">LOGIN</h2>
+        <h2 className="text-3xl mb-10 font-bold ">Admin Panel</h2>
         {error && (
           <p className="text-red-400 text-sm mb-2">{error}</p>
         )}
