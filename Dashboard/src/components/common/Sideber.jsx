@@ -93,6 +93,7 @@ const Sideber = () => {
                 <div className="flex items-center gap-3 p-2 cursor-pointer duration-300 ease-in-out hover:bg-green-300/20 rounded-r-lg border-l-4 border-[#064e3b] hover:border-green-300">
                   <GiVerticalBanner className='text-[16px] text-white' />
                   <h2 className=' text-white text-lg font-semibold'>Add Banner</h2>
+                  <h2 className=' text-white text-lg font-semibold'>Add Banner</h2>
                 </div>
               </Link>
             </div>
